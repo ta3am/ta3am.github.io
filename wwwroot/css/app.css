@@ -48,3 +48,17 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+    .logo-image{
+        width: 130px;
+        height: 260px;
+        overflow: hidden;
+        margin-top: -6px;
+    }
+
+
+    .navbar-toggler {
+        position: absolute;
+        margin-left: 75%;
+
+    }
