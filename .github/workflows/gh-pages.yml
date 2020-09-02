@@ -1,6 +1,12 @@
 name: 'Publish application'
-on: push
-
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
