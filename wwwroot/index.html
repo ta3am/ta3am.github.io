@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Ta3am</title>
     <base href="/" />
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="_framework/scoped.styles.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/cd645aa4d4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <!-- <div id="app">Loading...</div> -->
+    <div id="app">
+        <i class="fa fa-spinner fa-4x spinning text-center mt-10 ml-10" aria-hidden="true"></i>
+    </div>
+    
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -22,6 +29,7 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="main.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
