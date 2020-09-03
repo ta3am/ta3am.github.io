@@ -1,0 +1,43 @@
+name: 'Publish application'
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        # Checkout the code
+        - uses: actions/checkout@v2
+
+        # Install .NET Core SDK
+        - name: Setup .NET Core
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 5.0.100-preview.8.20417.9
+
+        # Run tests
+        - name: Test
+          run: dotnet test
+
+        # Generate the website
+        - name: Publish
+          run: dotnet publish ta3am.github.io.csproj --configuration Release
+
+        # Publish the website
+        - name: GitHub Pages action
+          if: ${{ github.ref == 'refs/heads/master' }} # Publish only when the push is on master
+          uses: peaceiris/actions-gh-pages@v3.6.1
+          with:
+            github_token: ${{ secrets.PUBLISH_TOKEN }}
+            publish_branch: azure-static
+            publish_dir: bin/Release/net5.0/browser-wasm/publish/wwwroot
+            allow_empty_commit: false
+            keep_files: true
+            force_orphan: false
+            # TODO uncomment the following line if you have a custom domain name
+            # cname: kevork.keheian.me
